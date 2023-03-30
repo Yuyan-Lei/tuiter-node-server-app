@@ -1,4 +1,4 @@
-import * as tuitsDao from '../../tuits/tuits-dao.js'
+import * as tuitsDao from './tuits-dao.js'
 
 export default (app) => {
     app.get('/api/tuits', findTuits);
@@ -27,8 +27,7 @@ const deleteTuit = async(req, res) => {
     const tuitdIdToDelete = req.params.tid;
     const status = await tuitsDao
                         .deleteTuit(tuitdIdToDelete);
-    res.sendStatus(status);
-
+    res.json(status);
 }
 
 const updateTuit = async(req, res) => {
